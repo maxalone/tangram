@@ -58,7 +58,7 @@
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: DM Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-  --bs-body-font-size: 0.75rem;
+  --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
   --bs-body-color: #000000;
@@ -94,7 +94,7 @@
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
-  font-size: var(--bs-body-font-size);
+  font-size: var(--bs-body-font-size) !important;
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
@@ -10896,10 +10896,10 @@ video.bg-video {
   padding-bottom: 5rem;
 }
 .masthead .masthead-content h1, .masthead .masthead-content .h1 {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 .masthead .masthead-content p {
-  font-size: 1.2rem;
+  font-size: 0.7rem;
 }
 .masthead .masthead-content p strong {
   font-weight: 700;
@@ -10936,10 +10936,10 @@ video.bg-video {
     padding-right: 9rem;
   }
   .masthead .masthead-content h1, .masthead .masthead-content .h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
   }
   .masthead .masthead-content p {
-    font-size: 1.3rem;
+    font-size: 0.9rem;
   }
 }
 @media (min-width: 1200px) {
