@@ -15,7 +15,7 @@
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
         
         <link href="css/styles.css" rel="stylesheet" />
-
+        <style>.AweformOpenButton { cursor: pointer; padding: 12px 24px 12px 24px; border-radius: 20px; background-color: rgba(28, 57, 94, 1); color: rgba(255, 255, 255, 1); }</style>
         <!-- Matomo -->
         <script>
             var _paq = window._paq = window._paq || [];
@@ -43,21 +43,22 @@
                     <img src="/assets/img/tangram_logo.png" width="50%" class="img-fluid" alt="">                    
                     <h1 class="fst-italic lh-1 mb-4 mt-5">Tangram Website is Coming Soon</h1>
                     <p class="mb-5">I'm working hard to finish the development of this site.<br>You are in the presence of a T-shaped personality</p>
+                    <span class="AweformOpenButton" aweformId="1218517569456046081" aweformMode="bottomLeftCorner" onclick="AweformOpen(this)">Notify me</span>
+                   <hr> 
+                   <!--
                     <form id="contactForm" action="https://formspree.io/f/xbllgqpe"
                     method="POST">
-                        <!-- Email address input-->
+                         
                         <div class="row input-group-newsletter">
                             <div class="col"><input class="form-control" id="email" type="email" placeholder="Not working yet..." aria-label="Enter email address..." data-sb-validations="required,email" /></div>
                             <div class="col-auto"><button class="btn btn-primary enabled" id="submitButton" type="submit">Notify Me!</button></div>
                         </div>
                         <div class="invalid-feedback mt-2" data-sb-feedback="email:required">An email is required.</div>
                         <div class="invalid-feedback mt-2" data-sb-feedback="email:email">Email is not valid.</div>
-                        <!-- Submit success message-->
-                        <!---->
-                        <!-- This is what your users will see when the form-->
-                        <!-- has successfully submitted-->
+
                         <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3 mt-2">Error sending message!</div></div>
                     </form>
+                -->
                 </div>
                 <div class="container-fluid px-4 px-lg-0">
                     <p id="lastModified"></p>
@@ -127,6 +128,12 @@
                 }
             });
 */
+            function AweformOpen(e) {
+                var se = document.createElement("script");
+                se.src = "https://aweform.com/v.4/Embed.js?T=" + (new Date().getTime());
+                se.onload = function () { var f = eval("AweformOpen"); f(e); }
+                document.body.appendChild(se);
+            }
             
         </script>
     </body>
