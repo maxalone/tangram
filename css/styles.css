@@ -892,7 +892,7 @@ progress {
 .gy-5 {
   --bs-gutter-y: 3rem;
 }
-@media (max-width: 400px){
+@media (max-width: 500px){
 body{
   flex-wrap: wrap;
 
