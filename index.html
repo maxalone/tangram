@@ -1,184 +1,635 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Tangram landing page" />
-        <meta name="author" content="mascam64" />
-        <title>Tangram.page Coming Soon</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
-        
-        <link href="css/styles.css" rel="stylesheet" />
-        <style>.AweformOpenButton { cursor: pointer; padding: 12px 24px 12px 24px; border-radius: 20px; background-color: rgba(28, 57, 94, 1); color: rgba(255, 255, 255, 1); }
-            
-            body {
-    
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="Tangram.page — project manager, artista e builder. Una personalità T-shaped: stessi pezzi, infinite forme." />
+<meta name="author" content="Tangram.page" />
+<title>Tangram.page — T-shaped</title>
+<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Hanken+Grotesk:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --ink:#0d1218;
+  --ink-2:#121a22;
+  --paper:#ece7dd;
+  --muted:#8c93a0;
+  --line:rgba(236,231,221,.12);
+
+  --terracotta:#e2603d;
+  --amber:#e7b23a;
+  --teal:#2fa89b;
+  --blue:#5b83c0;
+  --plum:#a06aa0;
+  --sand:#c9b79c;
+  --gold:#d98b3f;
+
+  --maxw:1140px;
 }
 
-button {
-    cursor: pointer;
-    padding: 12px 24px 12px 24px;
-    border-radius: 20px;
-    background-color: rgba(28, 57, 94, 1);
-    color: rgba(255, 255,255);
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--paper);
+  font-family:"Hanken Grotesk",system-ui,sans-serif;
+  font-weight:300;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
 }
 
-.popup {
-    display: none;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    max-width: 500px;
-    height: 500px;
-    background-color: rgba(0, 0, 0, 1);
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    animation: slideUp 0.5s forwards;
+/* atmosphere */
+body::before{
+  content:"";
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(900px 600px at 78% -10%, rgba(91,131,192,.18), transparent 60%),
+    radial-gradient(700px 500px at 8% 12%, rgba(226,96,61,.12), transparent 55%),
+    radial-gradient(1000px 800px at 50% 120%, rgba(47,168,155,.10), transparent 60%);
+}
+.grain{
+  position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-input{
-    margin-top: 10px;
+main, header, footer{position:relative;z-index:2}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+/* ---------- nav ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(10px);
+  background:linear-gradient(180deg, rgba(13,18,24,.85), rgba(13,18,24,.35));
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--paper)}
+.brand .glyph{height:30px;width:auto;display:block}
+.brand b{font-family:"Fraunces",serif;font-weight:500;font-size:1.15rem;letter-spacing:.01em}
+.brand span{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.28em;color:var(--muted);text-transform:uppercase}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{
+  color:var(--muted);text-decoration:none;font-size:.82rem;letter-spacing:.02em;
+  transition:color .25s;
+}
+.nav-links a:hover{color:var(--paper)}
+.nav-cta{
+  border:1px solid var(--line);border-radius:999px;padding:8px 18px !important;color:var(--paper) !important;
+}
+.nav-cta:hover{background:var(--paper);color:var(--ink) !important;border-color:var(--paper)}
+@media(max-width:760px){.nav-links a:not(.nav-cta){display:none}}
+
+/* ---------- hero ---------- */
+.hero{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;
+  padding:88px 0 96px;
+}
+@media(max-width:880px){.hero{grid-template-columns:1fr;padding:56px 0 64px;gap:36px}}
+
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 26px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--terracotta)}
+
+h1.name{
+  font-family:"Fraunces",serif;font-weight:340;font-size:clamp(2.7rem,7vw,5.2rem);
+  line-height:.98;letter-spacing:-.02em;margin:0 0 4px;
+}
+h1.name em{font-style:italic;color:var(--amber)}
+.alias{
+  font-family:"IBM Plex Mono",monospace;font-size:.8rem;letter-spacing:.18em;color:var(--muted);
+  margin:14px 0 28px;
+}
+.alias b{color:var(--paper);font-weight:500}
+.lead{font-size:1.12rem;max-width:34ch;color:#cfcabf;margin:0 0 34px}
+.lead strong{color:var(--paper);font-weight:500}
+
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+  font-size:.9rem;letter-spacing:.01em;padding:13px 24px;border-radius:999px;transition:.25s;
+}
+.btn-primary{background:var(--paper);color:var(--ink);font-weight:500}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--line);color:var(--paper)}
+.btn-ghost:hover{border-color:var(--paper)}
+
+/* ---------- logo animation (square -> logo) ---------- */
+.tangram-stage{display:flex;justify-content:center}
+.logo-anim{
+  position:relative;width:min(420px,86vw);cursor:pointer;
+  filter:drop-shadow(0 30px 60px rgba(0,0,0,.45));
+}
+.logo-anim::before{
+  content:"";position:absolute;inset:-8% -6%;border-radius:26px;z-index:-1;
+  background:radial-gradient(58% 58% at 50% 46%, rgba(236,231,221,.08), transparent 72%);
+}
+.logo-anim svg{display:block;width:100%;height:auto;aspect-ratio:998/771;overflow:visible}
+.lpiece{
+  transform-box:view-box;
+  transition:transform var(--logo-dur,2s) cubic-bezier(.62,.02,.2,1);
+  transition-delay:var(--d,0s);
+  will-change:transform;
+}
+/* default = closed square; .open => fly into the published logo */
+.logo-anim.open .lpiece{
+  transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) var(--post);
+}
+.tangram-hint{
+  text-align:center;margin-top:18px;font-family:"IBM Plex Mono",monospace;
+  font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
 }
 
-.popup-content {
-    background-color: rgb(0, 0, 0);
-    padding: 10px;
-    padding-left: 50px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    box-sizing: border-box;
+/* ---------- section frame ---------- */
+section{padding:96px 0;border-top:1px solid var(--line)}
+.sec-label{
+  font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 18px;
+}
+.sec-label::before{content:"";display:inline-block;width:26px;height:1px;background:var(--muted);vertical-align:middle;margin-right:14px}
+h2{
+  font-family:"Fraunces",serif;font-weight:340;font-size:clamp(1.9rem,4.4vw,3rem);
+  line-height:1.04;letter-spacing:-.015em;margin:0 0 22px;max-width:18ch;
+}
+h2 em{font-style:italic;color:var(--teal)}
+.sec-intro{max-width:52ch;color:#c4bfb5;font-size:1.05rem}
+
+/* ---------- the T ---------- */
+.t-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:48px}
+@media(max-width:820px){.t-grid{grid-template-columns:1fr;gap:40px}}
+.t-diagram{
+  position:relative;aspect-ratio:1/1;max-width:380px;width:100%;margin:0 auto;
+}
+.t-bar,.t-stem{position:absolute;border:1px dashed var(--line)}
+.t-bar{top:14%;left:6%;right:6%;height:30%;border-radius:8px;
+  background:linear-gradient(90deg,rgba(91,131,192,.16),rgba(47,168,155,.16));}
+.t-stem{top:44%;left:38%;width:24%;bottom:8%;border-radius:8px;
+  background:linear-gradient(180deg,rgba(226,96,61,.18),rgba(231,178,58,.12));}
+.t-tag{position:absolute;font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
+.t-tag.top{top:6%;left:6%}
+.t-tag.side{bottom:4%;left:38%;transform:translateX(-2px)}
+.t-list{list-style:none;padding:0;margin:0}
+.t-list li{padding:18px 0;border-bottom:1px solid var(--line);display:flex;gap:16px;align-items:flex-start}
+.t-list li:last-child{border-bottom:0}
+.t-list .k{font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--amber);letter-spacing:.12em;padding-top:4px;min-width:74px}
+.t-list .v strong{display:block;font-weight:500;color:var(--paper);margin-bottom:3px}
+.t-list .v span{color:var(--muted);font-size:.92rem}
+
+/* ---------- ambiti / pieces ---------- */
+.ambiti{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:48px}
+@media(max-width:860px){.ambiti{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.ambiti{grid-template-columns:1fr}}
+.ambito{
+  background:var(--ink);padding:30px 26px 34px;position:relative;transition:background .3s;
+  min-height:200px;display:flex;flex-direction:column;
+}
+.ambito:hover{background:var(--ink-2)}
+.ambito .num{font-family:"IBM Plex Mono",monospace;font-size:.66rem;color:var(--muted);letter-spacing:.18em}
+.ambito .shape{width:30px;height:30px;margin:14px 0 16px}
+.ambito h3{font-family:"Fraunces",serif;font-weight:400;font-size:1.32rem;margin:0 0 10px;line-height:1.1}
+.ambito p{margin:0;color:var(--muted);font-size:.92rem;line-height:1.55}
+.ambito .tags{margin-top:auto;padding-top:18px;font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.08em;color:#6f7682}
+.ambito .bar{position:absolute;left:0;top:0;width:3px;height:100%;opacity:.0;transition:opacity .3s}
+.ambito:hover .bar{opacity:1}
+.ambito p a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(236,231,221,.3);transition:border-color .2s}
+.ambito p a:hover{border-color:var(--paper)}
+.ambito .tags a{color:inherit;text-decoration:none;border-bottom:1px solid transparent;transition:.2s}
+.ambito .tags a:hover{color:var(--paper);border-color:var(--paper)}
+
+/* ---------- percorso / timeline ---------- */
+.timeline{list-style:none;margin:48px 0 0;padding:0}
+.timeline li{display:grid;grid-template-columns:96px 1fr;gap:30px}
+.tl-year{font-family:"Fraunces",serif;font-size:1.7rem;font-weight:400;color:var(--amber);line-height:1.1}
+.tl-body{position:relative;padding:0 0 36px 30px;border-left:1px solid var(--line)}
+.timeline li:last-child .tl-body{padding-bottom:0}
+.tl-body::before{content:"";position:absolute;left:-5px;top:7px;width:9px;height:9px;border-radius:50%;
+  background:var(--amber);box-shadow:0 0 0 4px var(--ink)}
+.tl-body strong{display:block;font-weight:500;color:var(--paper);margin-bottom:6px;font-size:1.02rem}
+.tl-body p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.55;max-width:54ch}
+.tl-body a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(236,231,221,.3)}
+.tl-body a:hover{border-color:var(--paper)}
+@media(max-width:620px){
+  .timeline li{grid-template-columns:1fr;gap:6px}
+  .tl-body{border-left:0;padding-left:0;padding-bottom:30px}
+  .tl-body::before{display:none}
 }
 
-.close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    cursor: pointer;
+/* ---------- competenze ---------- */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-top:48px}
+@media(max-width:820px){.skills{grid-template-columns:1fr}}
+.skill-col h4{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--paper);margin:0 0 18px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.chip-row{display:flex;flex-wrap:wrap;gap:9px}
+.chip{
+  font-size:.82rem;padding:6px 13px;border:1px solid var(--line);border-radius:999px;color:#c4bfb5;
+  transition:.2s;
 }
+.chip:hover{border-color:var(--paper);color:var(--paper)}
 
-@keyframes slideUp {
-    from {transform: translateY(100%);}
-    to {transform: translateY(0);}
+/* ---------- progetti ---------- */
+.projects{margin-top:48px;border-top:1px solid var(--line)}
+.project{
+  display:grid;grid-template-columns:90px 1fr auto;gap:28px;align-items:baseline;
+  padding:28px 6px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--paper);
+  transition:padding-left .3s, background .3s;
 }
+.project:hover{padding-left:18px;background:linear-gradient(90deg,rgba(236,231,221,.04),transparent)}
+.project .yr{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--muted)}
+.project .title{font-family:"Fraunces",serif;font-size:1.4rem;font-weight:400}
+.project .title small{display:block;font-family:"Hanken Grotesk",sans-serif;font-size:.9rem;color:var(--muted);font-weight:300;margin-top:5px;max-width:60ch}
+.project .role{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+.project .arrow{transition:transform .3s;display:inline-block}
+.project:hover .arrow{transform:translate(4px,-4px)}
+@media(max-width:680px){.project{grid-template-columns:1fr;gap:8px}.project .role{display:none}}
 
+/* ---------- contatti ---------- */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:780px){.contact{grid-template-columns:1fr;gap:32px}}
+.contact h2{margin-bottom:14px}
+.socials{display:flex;flex-wrap:wrap;gap:14px}
+.soc{
+  display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:14px;
+  border:1px solid var(--line);color:var(--paper);text-decoration:none;font-size:1.15rem;transition:.25s;
+}
+.soc:hover{background:var(--paper);color:var(--ink);transform:translateY(-3px)}
+.soc img{width:18px;height:18px;filter:brightness(0) invert(1);transition:filter .25s}
+.soc:hover img{filter:none}
+.contact-meta{font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--muted);line-height:2}
+.contact-meta a{color:var(--paper);text-decoration:none;border-bottom:1px solid var(--line)}
+.contact-meta a:hover{border-color:var(--paper)}
 
-        </style>
-        <!-- Matomo -->
-        <script>
-            var _paq = window._paq = window._paq || [];
-            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-            _paq.push(['trackPageView']);
-            _paq.push(['enableLinkTracking']);
-            (function() {
-            var u="//matomodocker.azurewebsites.net/";
-            _paq.push(['setTrackerUrl', u+'matomo.php']);
-            _paq.push(['setSiteId', '10']);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-            })();
-        </script>
-        <!-- End Matomo Code -->
-  
-    </head>
-    <body>
-        <!-- Background Video-->
-        <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop"><source src="assets/mp4/bgmani.mp4" type="video/mp4" /></video>
-        <!-- Masthead-->
-        <div class="masthead">
-            <div class="masthead-content text-white">
-                <div class="container-fluid px-4 px-lg-0">
-                    <img src="/assets/img/tangram_logo.png" width="50%" class="img-fluid" alt="">                    
-                    <h1 class="fst-italic lh-1 mb-4 mt-5">Tangram Website is Coming Soon</h1>
-                    <p class="mb-5">I'm working hard to finish the development of this site.<br>You are in the presence of a T-shaped personality</p>
-                    
-                   <hr> 
-                   <button id="openPopup">Open Form</button>
-                   <div id="popupForm" class="popup" style="border-radius: 10px ;width: 100vw; height: 100vh; position: fixed; overflow: auto; transform: translateZ(0px); opacity: 1; transition: transform 1.08s; position: fixed; overflow: hidden; width: 400px; height: 500px;">
-                        <form class="popup-content" action="https://api.web3forms.com/submit" method="POST">
-                            <span class="close" id="closePopup">&times;</span>
-                            <h2>Get in touch</h2>
-                            <input type="hidden" name="access_key" value="55f5fdca-f693-413b-9d3d-76aec5315eb1">
-                            <input type="text" name="name" placeholder="Your Name" required><br>
-                            <input type="email" name="email" placeholder="Your Email" required><br>
-                            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                            <input type="hidden" name="redirect" value="/">
-                            <div class="h-captcha" style="margin-top: 10px;" data-captcha="true"></div>
-                            <button type="submit">Submit</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="container-fluid px-4 px-lg-0">
-                    <p id="lastModified"></p>
-                </div>
-            </div>
+/* ---------- contact form ---------- */
+.cform{display:flex;flex-direction:column;gap:14px}
+.cform .hp{position:absolute !important;left:-9999px;width:1px;height:1px;overflow:hidden}
+.cform input,.cform textarea{
+  width:100%;background:rgba(236,231,221,.04);border:1px solid var(--line);border-radius:12px;
+  color:var(--paper);font-family:"Hanken Grotesk",sans-serif;font-size:.98rem;padding:14px 16px;
+  transition:border-color .2s,background .2s;
+}
+.cform input:focus,.cform textarea:focus{outline:none;border-color:var(--paper);background:rgba(236,231,221,.06)}
+.cform input::placeholder,.cform textarea::placeholder{color:#6f7682}
+.cform textarea{min-height:128px;resize:vertical;line-height:1.5}
+.cform button{
+  align-self:flex-start;margin-top:4px;cursor:pointer;border:0;
+  background:var(--paper);color:var(--ink);font-family:"Hanken Grotesk",sans-serif;font-weight:500;
+  font-size:.92rem;padding:13px 26px;border-radius:999px;transition:transform .25s;
+}
+.cform button:hover{transform:translateY(-2px)}
+.contact-meta.row{margin-top:30px}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:40px 0}
+.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+  font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease, transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+</style>
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//matomodocker.azurewebsites.net/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '10']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+</head>
+<body>
+<div class="grain"></div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <img class="glyph" src="assets/img/tangram_logo.png" alt="Logo Tangram" />
+      <div>
+        <b>Tangram.page</b><br>
+        <span>personalità T-shaped</span>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="#t">La forma a T</a>
+      <a href="#ambiti">Ambiti</a>
+      <a href="#percorso">Percorso</a>
+      <a href="#progetti">Progetti</a>
+      <a href="#contatti" class="nav-cta">Contatti</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <div class="wrap">
+    <section style="border-top:0;padding-top:0" class="hero">
+      <div>
+        <p class="eyebrow"><span class="dot"></span>Project manager · Artista · Builder</p>
+        <h1 class="name">Tangram<em>.page</em></h1>
+        <p class="alias">alias <b>nevoanarua</b> · L'Aquila / Roma · <em>una personalità T-shaped</em></p>
+        <p class="lead">Stessi pezzi, <strong>infinite forme</strong>. Lavoro dove arte, tecnologia e comunità si ricompongono: progetto, costruisco, espongo. Una competenza profonda che tiene insieme molti linguaggi.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#ambiti">Cosa faccio <span aria-hidden="true">↓</span></a>
+          <a class="btn btn-ghost" href="#contatti">Parliamone</a>
         </div>
-        <!-- Social Icons-->
-        <!-- For more icon options, visit https://fontawesome.com/icons?d=gallery&p=2&s=brands-->
-        <div class="social-icons">
-            <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
-                <a class="btn btn-dark m-3" href="https://www.linkedin.com/in/massimocamplone/"><i class="fab fa-linkedin"></i></a>
-                <a class="btn btn-dark m-3" href="https://github.com/maxalone/"><i class="fab fa-github"></i></a>
-                <a class="btn btn-dark m-3" href="https://www.instagram.com/nevoanarua/"><i class="fab fa-instagram"></i></a>
-                <a class="btn btn-dark m-3" href="mailto:mascam64@outlook.it"><i class="fa-regular fa-envelope"></i></a>
-                <a class="btn btn-dark m-3" href="https://wa.me/39347264660"><i class="fa-brands fa-whatsapp"></i></a>
-                <a class="btn btn-dark m-3" href="https://spaziogenesi.org/biografie/bio.htm?artista=nevoanarua"><img width="15em" src="/assets/img/sg_logo_aureo_social_ed.ico"></i></a>
-                <a class="btn btn-dark m-3" href="https://www.offsiteart.it/team"><img width="15em" src="/assets/img/offsite-g.ico"></i></a>
-            </div>
+      </div>
+      <div class="tangram-stage">
+        <div>
+          <div class="logo-anim" id="logoAnim" title="clicca: dal quadrato al logo">
+            <svg viewBox="0 0 998 771" role="img" aria-label="Il logo Tangram: i sette pezzi si chiudono in un quadrato e si riaprono nel logo">
+              <polygon class="lpiece" points="268.70,156.70 727.30,156.70 498.00,386.00" fill="#a57340" style="transform-origin:498px 233.13px;--dx:-148.67px;--dy:386.2px;--rot:0.41deg;--post:scale(1,1);--d:0s"/>
+              <polygon class="lpiece" points="268.70,156.70 498.00,386.00 268.70,615.30" fill="#a57340" style="transform-origin:345.13px 386px;--dx:-115.47px;--dy:59.67px;--rot:-89.59deg;--post:scale(1,1);--d:.09s"/>
+              <polygon class="lpiece" points="498.00,386.00 612.65,271.35 727.30,386.00 612.65,500.65" fill="#a57340" style="transform-origin:612.65px 386px;--dx:-349.15px;--dy:-197.5px;--rot:158.24deg;--post:scale(1,1);--d:.18s"/>
+              <polygon class="lpiece" points="727.30,386.00 498.00,615.30 727.30,615.30" fill="#1d3a5e" style="transform-origin:650.87px 538.87px;--dx:30.47px;--dy:-71.87px;--rot:-134.38deg;--post:scale(1,1);--d:.27s"/>
+              <polygon class="lpiece" points="268.70,615.30 383.35,500.65 612.65,500.65 498.00,615.30" fill="#1d3a5e" style="transform-origin:440.68px 557.98px;--dx:124.82px;--dy:-235.48px;--rot:90.32deg;--post:scale(1,-1);--d:.36s"/>
+              <polygon class="lpiece" points="727.30,156.70 727.30,386.00 612.65,271.35" fill="#1d3a5e" style="transform-origin:689.08px 271.35px;--dx:-5.42px;--dy:-148.35px;--rot:178.92deg;--post:scale(1,1);--d:.45s"/>
+              <polygon class="lpiece" points="498.00,386.00 383.35,500.65 612.65,500.65" fill="#1d3a5e" style="transform-origin:498px 462.43px;--dx:374.67px;--dy:122.23px;--rot:-179.16deg;--post:scale(1,1);--d:.54s"/>
+            </svg>
+          </div>
+          <p class="tangram-hint">↻ clicca: dal quadrato al logo</p>
         </div>
-        
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        
-        <script src="js/scripts.js"></script>
-        
-        <script> 
-        const dataModifica = new Date(document.lastModified);
-        const dataLocale = dataModifica.toLocaleDateString(navigator.language, { day: 'numeric', month: 'long', year: 'numeric' });
-        document.getElementById('lastModified').textContent = 'Last modified: ' + dataLocale; 
-        
-        const videoList = ['assets/mp4/bgmani.mp4', 'assets/mp4/sculpture.mp4', 'assets/mp4/crosswalk.mp4', 'assets/mp4/writer.mp4', 'assets/mp4/max_roccia1.mp4' ];
-        
-        function setRandomVideo() { 
-            const videoElement = document.querySelector('.bg-video'); 
-            const randomIndex = Math.floor(Math.random() * videoList.length); 
-            const selectedVideo = videoList[randomIndex];
-            const sourceElement = document.createElement('source'); 
-            sourceElement.setAttribute('src', selectedVideo); 
-            sourceElement.setAttribute('type', 'video/mp4'); 
-            videoElement.innerHTML = ''; 
-            videoElement.appendChild(sourceElement); 
-            videoElement.load(); 
-        } 
-            
-            setRandomVideo();
+      </div>
+    </section>
+  </div>
 
-            document.getElementById('openPopup').addEventListener('click', function() {
-            document.getElementById('popupForm').style.display = 'flex';
-            });
+  <!-- THE T -->
+  <section id="t">
+    <div class="wrap reveal">
+      <p class="sec-label">Il principio</p>
+      <h2>Profondità in una cosa, <em>respiro</em> in molte.</h2>
+      <p class="sec-intro">«T-shaped» descrive chi unisce una competenza verticale e specialistica a un’ampia capacità di muoversi tra discipline diverse — e di farle dialogare. Il tangram è la stessa idea resa figura: sette pezzi rigidi, una grammatica infinita di forme.</p>
+      <div class="t-grid">
+        <div class="t-diagram" aria-hidden="true">
+          <span class="t-tag top">Ampiezza → orizzontale</span>
+          <div class="t-bar"></div>
+          <div class="t-stem"></div>
+          <span class="t-tag side">Profondità ↓</span>
+        </div>
+        <ul class="t-list">
+          <li><span class="k">VERTICALE</span><span class="v"><strong>Costruire sistemi</strong><span>Software full-stack, infrastruttura cloud, oggetti fisici che funzionano davvero — dall’idea alla messa in opera.</span></span></li>
+          <li><span class="k">ORIZZONTALE</span><span class="v"><strong>Arte · cultura · sociale · media</strong><span>Curo e gestisco progetti, espongo come artista, lavoro con le comunità. Linguaggi diversi, una sola visione.</span></span></li>
+          <li><span class="k">METODO</span><span class="v"><strong>Tradurre tra mondi</strong><span>Porto rigore tecnico dove serve immaginazione, e immaginazione dove serve rigore.</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-            document.getElementById('closePopup').addEventListener('click', function() {
-            document.getElementById('popupForm').style.display = 'none';
-            });
+  <!-- AMBITI -->
+  <section id="ambiti">
+    <div class="wrap reveal">
+      <p class="sec-label">Ambiti di azione</p>
+      <h2>Sette pezzi, una sola <em>persona</em>.</h2>
+      <p class="sec-intro">Ogni area è un tassello del tangram qui sopra. Singolarmente sono mestieri; insieme sono un modo di lavorare.</p>
 
-            window.addEventListener('click', function(event) {
-            if (event.target == document.getElementById('popupForm')) {
-            document.getElementById('popupForm').style.display = 'none';
-            }
-            });
-        </script>
-        <script src="https://web3forms.com/client/script.js" async defer></script>
-    </body>
+      <div class="ambiti">
+        <div class="ambito"><div class="bar" style="background:#e2603d"></div>
+          <span class="num">01</span>
+          <svg class="shape" viewBox="0 0 32 32"><polygon points="0,0 32,0 16,16" fill="#e2603d"/></svg>
+          <h3>Arte contemporanea</h3>
+          <p>Pratica personale come <b><a href="https://spaziogenesi.org/biografie/bio.htm?artista=nevoanarua" target="_blank" rel="noopener">nevoanarua</a></b>: scultura, immagine, intervento. Ricerca all’Accademia di Belle Arti.</p>
+          <div class="tags"><a href="https://spaziogenesi.org" target="_blank" rel="noopener">Spazio Genesi</a> · <a href="https://www.instagram.com/nevoanarua/" target="_blank" rel="noopener">Instagram</a></div>
+        </div>
+        <div class="ambito"><div class="bar" style="background:#5b83c0"></div>
+          <span class="num">02</span>
+          <svg class="shape" viewBox="0 0 32 32"><polygon points="0,0 16,16 0,32" fill="#5b83c0"/></svg>
+          <h3>Sviluppo software</h3>
+          <p>Full-stack: dal front-end alle API. C#, JavaScript, Python, PHP, Vue, Node, .NET.</p>
+          <div class="tags">Web · App · Automazioni</div>
+        </div>
+        <div class="ambito"><div class="bar" style="background:#e7b23a"></div>
+          <span class="num">03</span>
+          <svg class="shape" viewBox="0 0 32 32"><polygon points="32,16 16,32 32,32" fill="#e7b23a"/></svg>
+          <h3>Cloud & infrastruttura</h3>
+          <p>Containerizzazione e deploy: Docker, Kubernetes, Azure, Cloudflare. Sistemi che reggono.</p>
+          <div class="tags">DevOps · Self-hosting</div>
+        </div>
+        <div class="ambito"><div class="bar" style="background:#2fa89b"></div>
+          <span class="num">04</span>
+          <svg class="shape" viewBox="0 0 32 32"><polygon points="16,8 24,16 16,24 8,16" fill="#2fa89b"/></svg>
+          <h3>Project & cultural management</h3>
+          <p>Project manager per <b><a href="https://www.offsiteart.it/team" target="_blank" rel="noopener">Off Site Art</a></b>: dalla progettazione alla realizzazione di mostre, call ed eventi nello spazio pubblico.</p>
+          <div class="tags"><a href="https://www.offsiteart.it/team" target="_blank" rel="noopener">Off Site Art</a> · OffSite</div>
+        </div>
+        <div class="ambito"><div class="bar" style="background:#a06aa0"></div>
+          <span class="num">05</span>
+          <svg class="shape" viewBox="0 0 32 32"><polygon points="32,0 32,16 24,8" fill="#a06aa0"/></svg>
+          <h3>Maker · IoT · elettronica</h3>
+          <p>Hardware che misura il mondo: sensori, Arduino, geolocalizzazione. Il fisico e il digitale insieme.</p>
+          <div class="tags"><a href="https://github.com/maxalone/ardusb" target="_blank" rel="noopener">ardusb</a> · <a href="https://sentinelle.mappa.asud.net/" target="_blank" rel="noopener">ambiente</a></div>
+        </div>
+        <div class="ambito"><div class="bar" style="background:#c9b79c"></div>
+          <span class="num">06</span>
+          <svg class="shape" viewBox="0 0 32 32"><polygon points="16,16 8,24 24,24" fill="#c9b79c"/></svg>
+          <h3>Pratiche sociali & comunità</h3>
+          <p>Progetti auto-gestiti di assistenza sociale e modi alternativi di abitare e stare insieme.</p>
+          <div class="tags">Comunità · Mutualismo</div>
+        </div>
+        <div class="ambito"><div class="bar" style="background:#d98b3f"></div>
+          <span class="num">07</span>
+          <svg class="shape" viewBox="0 0 32 32"><polygon points="0,32 8,24 24,24 16,32" fill="#d98b3f"/></svg>
+          <h3>Suono, radio & media</h3>
+          <p>Streaming e infrastrutture per il suono: dalla radio indipendente ai mondi virtuali condivisi.</p>
+          <div class="tags">Icecast · <a href="https://github.com/maxalone/docker-opensimulator" target="_blank" rel="noopener">OpenSimulator</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERCORSO -->
+  <section id="percorso">
+    <div class="wrap reveal">
+      <p class="sec-label">Percorso</p>
+      <h2>Dal 1989, una <em>traiettoria</em>.</h2>
+      <p class="sec-intro">Prima la tecnologia, poi l'arte: due rette che a un certo punto si sono incrociate — ed è lì che vivo.</p>
+      <ol class="timeline">
+        <li>
+          <span class="tl-year">1989</span>
+          <div class="tl-body"><strong>Inizio nell'IT</strong>
+            <p>I primi passi nel mondo dell'informatica. Da qui parte tutto.</p></div>
+        </li>
+        <li>
+          <span class="tl-year">1996</span>
+          <div class="tl-body"><strong>Focus su Internet</strong>
+            <p>Mi specializzo sul web e sulle tecnologie di rete, seguendone la crescita dall'interno.</p></div>
+        </li>
+        <li>
+          <span class="tl-year">2004</span>
+          <div class="tl-body"><strong>Ingresso nel mondo dell'arte</strong>
+            <p>Fondo e dirigo <em>artxworld.com</em>, testata editoriale d'arte (oggi dismessa). Un coinvolgimento informale che prosegue fino al 2017.</p></div>
+        </li>
+        <li>
+          <span class="tl-year">2017</span>
+          <div class="tl-body"><strong>Cloud, e arte in prima persona</strong>
+            <p>Doppia svolta: mi specializzo sull'infrastruttura cloud e inizio a produrre arte come autore.</p></div>
+        </li>
+        <li>
+          <span class="tl-year">2022</span>
+          <div class="tl-body"><strong>Accademia di Belle Arti</strong>
+            <p>Mi iscrivo all'Accademia di Belle Arti dell'Aquila (ABAQ): la ricerca artistica diventa anche studio formale.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- COMPETENZE -->
+  <section id="competenze">
+    <div class="wrap reveal">
+      <p class="sec-label">Strumenti</p>
+      <h2>Il <em>repertorio</em>.</h2>
+      <div class="skills">
+        <div class="skill-col">
+          <h4>Codice</h4>
+          <div class="chip-row">
+            <span class="chip">C#</span><span class="chip">JavaScript</span><span class="chip">Python</span>
+            <span class="chip">PHP</span><span class="chip">.NET</span><span class="chip">Vue.js</span>
+            <span class="chip">Node.js</span><span class="chip">HTML5 / CSS3</span><span class="chip">Bootstrap</span>
+            <span class="chip">MySQL</span>
+          </div>
+        </div>
+        <div class="skill-col">
+          <h4>Infrastruttura</h4>
+          <div class="chip-row">
+            <span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Azure</span>
+            <span class="chip">Cloudflare</span><span class="chip">Linux</span><span class="chip">Self-hosting</span>
+            <span class="chip">Arduino / IoT</span>
+          </div>
+        </div>
+        <div class="skill-col">
+          <h4>Arte & progetto</h4>
+          <div class="chip-row">
+            <span class="chip">Project management</span><span class="chip">Curatela</span><span class="chip">Arte pubblica</span>
+            <span class="chip">Scultura</span><span class="chip">Call & bandi</span><span class="chip">Progettazione culturale</span>
+            <span class="chip">Comunità</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGETTI -->
+  <section id="progetti">
+    <div class="wrap reveal">
+      <p class="sec-label">Selezione</p>
+      <h2>Cose che sono <em>nel mio mondo</em>.</h2>
+      <div class="projects">
+        <a class="project" href="https://spaziogenesi.org" target="_blank" rel="noopener">
+          <span class="yr">in corso</span>
+          <span class="title">Spazio Genesi <small>Associazione di studenti dell'Accademia di Belle Arti dell'Aquila: uno spazio espositivo per l'arte contemporanea e gli artisti emergenti.</small></span>
+          <span class="role">Arte contemporanea <span class="arrow">↗</span></span>
+        </a>
+        <a class="project" href="https://attestazione.spaziogenesi.org" target="_blank" rel="noopener">
+          <span class="yr">strumento</span>
+          <span class="title">Attestazione <small>Impronta crittografica (SHA-256) con marca temporale su blockchain: certifica l'esistenza di un'opera digitale in un dato istante.</small></span>
+          <span class="role">Certificazione <span class="arrow">↗</span></span>
+        </a>
+        <a class="project" href="https://sentinelle.mappa.asud.net/" target="_blank" rel="noopener">
+          <span class="yr">in corso</span>
+          <span class="title">Sentinelle Climatiche <small>Citizen science: scuole e comunità mappano e raccontano gli eventi meteo estremi dei loro territori.</small></span>
+          <span class="role">Citizen science <span class="arrow">↗</span></span>
+        </a>
+        <a class="project" href="https://spaziogenesi.org/biografie/bio.htm?artista=nevoanarua" target="_blank" rel="noopener">
+          <span class="yr">in corso</span>
+          <span class="title">nevoanarua <small>Pratica artistica personale e ricerca, presentata in Spazio Genesi.</small></span>
+          <span class="role">Artista <span class="arrow">↗</span></span>
+        </a>
+        <a class="project" href="https://github.com/maxalone/ardusb" target="_blank" rel="noopener">
+          <span class="yr">open source</span>
+          <span class="title">ardusb <small>Sistema su Arduino per il monitoraggio dell'inquinamento atmosferico con geolocalizzazione.</small></span>
+          <span class="role">Maker / dev <span class="arrow">↗</span></span>
+        </a>
+        <a class="project" href="https://github.com/maxalone/docker-opensimulator" target="_blank" rel="noopener">
+          <span class="yr">open source</span>
+          <span class="title">docker-opensimulator <small>Container aggiornato per OpenSimulator: mondi virtuali 3D condivisi.</small></span>
+          <span class="role">Dev / infra <span class="arrow">↗</span></span>
+        </a>
+        <a class="project" href="https://www.offsiteart.it/team" target="_blank" rel="noopener">
+          <span class="yr">in corso</span>
+          <span class="title">Off Site Art <small>Arte pubblica e contaminazione nello spazio urbano — L'Aquila, dal 2014.</small></span>
+          <span class="role">Project manager <span class="arrow">↗</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section id="contatti">
+    <div class="wrap reveal contact">
+      <div>
+        <p class="sec-label">Mettiamoci in contatto</p>
+        <h2>Un progetto che <em>cambia forma</em>?</h2>
+        <p class="sec-intro">Tecnologia, arte, cultura o un po’ di tutto: se serve qualcuno che tenga insieme i pezzi, scrivimi.</p>
+        <div class="socials" style="margin-top:30px">
+          <a class="soc" href="https://www.linkedin.com/in/massimocamplone/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a class="soc" href="https://github.com/maxalone/" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a class="soc" href="https://www.instagram.com/nevoanarua/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a class="soc" href="https://wa.me/39347264660" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a class="soc" href="mailto:info@tangram.page" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+          <a class="soc" href="https://spaziogenesi.org/biografie/bio.htm?artista=nevoanarua" target="_blank" rel="noopener" aria-label="Spazio Genesi"><img src="/assets/img/sg_logo_aureo_social_ed.ico" alt="Spazio Genesi"></a>
+          <a class="soc" href="https://www.offsiteart.it/team" target="_blank" rel="noopener" aria-label="Off Site Art"><img src="/assets/img/offsite-g.ico" alt="Off Site Art"></a>
+        </div>
+        <div class="contact-meta row">
+          <a href="mailto:info@tangram.page">info@tangram.page</a><br>
+          L'Aquila / Roma · IT
+        </div>
+      </div>
+      <div>
+        <form class="cform" action="https://formsubmit.co/info@tangram.page" method="POST">
+          <input type="hidden" name="_subject" value="Nuovo messaggio da tangram.page">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://tangram.page/grazie.html">
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="text" name="name" placeholder="Il tuo nome" required>
+          <input type="email" name="email" placeholder="La tua email" required>
+          <textarea name="message" placeholder="Raccontami in due righe di te o del progetto" required></textarea>
+          <button type="submit">Invia il messaggio →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="yr"></span> Tangram.page</span>
+    <span>Stessi pezzi · infinite forme</span>
+    <span id="lastModified"></span>
+  </div>
+</footer>
+
+<script>
+  // logo animation: start closed (square), then open into the published logo
+  var logoAnim = document.getElementById('logoAnim');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ logoAnim.classList.add('open'); }, 650);
+  });
+  // click: toggle between square and logo — the user decides where it stays
+  logoAnim.addEventListener('click', function(){
+    logoAnim.classList.toggle('open');
+  });
+
+  // scroll reveal
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // footer meta
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var dm = new Date(document.lastModified);
+  document.getElementById('lastModified').textContent = 'agg. ' + dm.toLocaleDateString('it-IT',{day:'numeric',month:'short',year:'numeric'});
+</script>
+</body>
 </html>

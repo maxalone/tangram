@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Tangram — animazione logo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0d1218;--paper:#ece7dd;--muted:#8c93a0;--line:rgba(236,231,221,.14);--dur:2.1s;
+  --ease:cubic-bezier(.62,.02,.2,1);}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:
+  radial-gradient(1000px 700px at 50% -10%,rgba(91,131,192,.14),transparent 60%),
+  radial-gradient(800px 600px at 50% 120%,rgba(165,115,64,.12),transparent 60%),var(--bg);
+  color:var(--paper);font-family:"IBM Plex Mono",monospace;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;padding:40px 20px}
+.title{text-align:center}
+.title h1{font-family:"Fraunces",serif;font-weight:340;font-size:clamp(1.6rem,4vw,2.4rem);margin:0 0 8px;letter-spacing:-.01em}
+.title p{margin:0;color:var(--muted);font-size:.72rem;letter-spacing:.24em;text-transform:uppercase}
+
+.stage{
+  width:min(560px,86vw);aspect-ratio:998/771;border-radius:18px;cursor:pointer;
+  background:linear-gradient(180deg,#f3f0e9,#e8e3d8);
+  box-shadow:0 40px 80px -30px rgba(0,0,0,.7),inset 0 0 0 1px rgba(0,0,0,.05);
+  display:flex;align-items:center;justify-content:center;padding:6%;position:relative;overflow:hidden}
+.stage::after{content:"clicca per aprire / chiudere";position:absolute;bottom:12px;left:0;right:0;text-align:center;
+  font-size:.6rem;letter-spacing:.18em;color:#9c958a;text-transform:uppercase;pointer-events:none;opacity:.7}
+svg{width:100%;height:100%;overflow:visible}
+.piece{
+  transform-box:view-box;
+  transition:transform var(--dur) var(--ease);
+  transition-delay:var(--d,0s);
+  will-change:transform;
+}
+/* default = closed square (no transform). .open => fly to logo */
+.stage.open .piece{
+  transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) var(--post);
+}
+
+.controls{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center}
+button{
+  font-family:inherit;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper);
+  background:transparent;border:1px solid var(--line);border-radius:999px;padding:11px 20px;cursor:pointer;
+  transition:.2s}
+button:hover{background:var(--paper);color:var(--bg);border-color:var(--paper)}
+.controls .sep{width:1px;height:22px;background:var(--line)}
+label.speed{display:flex;align-items:center;gap:9px;font-size:.66rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+input[type=range]{accent-color:#a57340}
+.note{color:var(--muted);font-size:.66rem;letter-spacing:.06em;max-width:560px;text-align:center;line-height:1.7}
+</style>
+</head>
+<body>
+  <div class="title">
+    <h1>Stessi pezzi, infinite forme</h1>
+    <p>tangram · dal quadrato al logo</p>
+  </div>
+
+  <div class="stage open" id="stage" title="clic per aprire/chiudere">
+    <svg viewBox="0 0 998 771" role="img" aria-label="Animazione del logo Tangram: i sette pezzi si chiudono in un quadrato e si riaprono nel logo">
+      <polygon class="piece" data-k="biga" points="268.70,156.70 727.30,156.70 498.00,386.00" fill="#a57340" style="transform-origin:498.0px 233.13px;--dx:-148.67px;--dy:386.2px;--rot:0.41deg;--post:scale(1,1);--d:0.0s"/>
+      <polygon class="piece" data-k="bigb" points="268.70,156.70 498.00,386.00 268.70,615.30" fill="#a57340" style="transform-origin:345.13px 386.0px;--dx:-115.47px;--dy:59.67px;--rot:-89.59deg;--post:scale(1,1);--d:0.07s"/>
+      <polygon class="piece" data-k="sq" points="498.00,386.00 612.65,271.35 727.30,386.00 612.65,500.65" fill="#a57340" style="transform-origin:612.65px 386.0px;--dx:-349.15px;--dy:-197.5px;--rot:158.24deg;--post:scale(1,1);--d:0.14s"/>
+      <polygon class="piece" data-k="med" points="727.30,386.00 498.00,615.30 727.30,615.30" fill="#1d3a5e" style="transform-origin:650.87px 538.87px;--dx:30.47px;--dy:-71.87px;--rot:-134.38deg;--post:scale(1,1);--d:0.21s"/>
+      <polygon class="piece" data-k="par" points="268.70,615.30 383.35,500.65 612.65,500.65 498.00,615.30" fill="#1d3a5e" style="transform-origin:440.68px 557.98px;--dx:124.82px;--dy:-235.48px;--rot:90.32deg;--post:scale(1,-1);--d:0.28s"/>
+      <polygon class="piece" data-k="s1" points="727.30,156.70 727.30,386.00 612.65,271.35" fill="#1d3a5e" style="transform-origin:689.08px 271.35px;--dx:-5.42px;--dy:-148.35px;--rot:178.92deg;--post:scale(1,1);--d:0.35s"/>
+      <polygon class="piece" data-k="s2" points="498.00,386.00 383.35,500.65 612.65,500.65" fill="#1d3a5e" style="transform-origin:498.0px 462.43px;--dx:374.67px;--dy:122.23px;--rot:-179.16deg;--post:scale(1,1);--d:0.42s"/>
+    </svg>
+  </div>
+
+  <div class="controls">
+    <button id="toLogo">▶ Apri nel logo</button>
+    <button id="toSquare">■ Chiudi a quadrato</button>
+    <button id="loop">⟳ Loop</button>
+    <span class="sep"></span>
+    <label class="speed">Velocità
+      <input id="speed" type="range" min="0.6" max="3.5" step="0.1" value="2.1"/>
+    </label>
+  </div>
+  <p class="note">Il logo Tangram è un vero tangram a 7 pezzi: 2 triangoli grandi, 1 medio, 2 piccoli, 1 quadrato e 1 parallelogramma. Qui i pezzi partono dal quadrato chiuso e ruotano/scivolano fino a comporre il logo pubblicato. Il parallelogramma si ribalta — come nel tangram fisico.</p>
+
+<script>
+  const stage=document.getElementById('stage');
+  const speed=document.getElementById('speed');
+  let loopId=null;
+  const setDur=v=>document.documentElement.style.setProperty('--dur',v+'s');
+  setDur(speed.value);
+  speed.addEventListener('input',()=>setDur(speed.value));
+
+  document.getElementById('toLogo').onclick =()=>stage.classList.add('open');
+  document.getElementById('toSquare').onclick=()=>stage.classList.remove('open');
+  stage.onclick=()=>stage.classList.toggle('open');
+
+  document.getElementById('loop').onclick=function(){
+    if(loopId){clearInterval(loopId);loopId=null;this.style.background='';this.style.color='';return;}
+    this.style.background='var(--paper)';this.style.color='var(--bg)';
+    const tick=()=>stage.classList.toggle('open');
+    const period=()=>(parseFloat(speed.value)*1000+900);
+    loopId=setInterval(tick,period());
+  };
+
+  // intro: start closed, then open
+  stage.classList.remove('open');
+  setTimeout(()=>stage.classList.add('open'),700);
+</script>
+</body>
+</html>
